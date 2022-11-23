@@ -147,19 +147,22 @@ class _EkranWidgetState extends State<EkranWidget> {
   @override
   Widget build(BuildContext context) {
     strFiyat=[];
-
+    int i =1;
     return Expanded(
       child: ListView.builder(
-
         shrinkWrap: false,
         itemCount: widget.listOfDocumentSnap.length,
         itemBuilder: (context, index) {
           List<int> fiyatInt =[];
           print("Listview Çalıştı");
           strFiyat.add(widget.listOfDocumentSnap[index]["fiyat"]);
-
+          print(widget.listOfDocumentSnap.length);
           fiyatInt = strFiyat.map(int.parse).toList();
-          genelKullanim = fiyatInt.fold(0, (previousValue, element) => previousValue+element);
+          if(widget.listOfDocumentSnap.length>=i){
+            genelKullanim = fiyatInt.fold(0, (previousValue, element) => previousValue+element);
+            i++;
+          }
+
           return Padding(
             padding: const EdgeInsets.all(5.0),
             child: Container(

@@ -23,8 +23,6 @@ class _AyrikGiderlerState extends State<AyrikGiderler> {
 
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       appBar: AppBar(
 
@@ -59,6 +57,7 @@ class _AyrikGiderlerState extends State<AyrikGiderler> {
 }
 
 class AyrikEkran extends StatelessWidget {
+  int i = 1;
 
   late List<String> strFiyat=[];
 
@@ -78,10 +77,15 @@ class AyrikEkran extends StatelessWidget {
           strFiyat.add(listOfDocumentSnap[index]["fiyat"]);
           List<int> fiyatInt =[];
           fiyatInt = strFiyat.map(int.parse).toList();
-          kisiselKullanim = fiyatInt.fold(0, (previousValue, element) => previousValue+element);
+          print(listOfDocumentSnap.length);
+          if(listOfDocumentSnap.length>=i){
+            kisiselKullanim = fiyatInt.fold(0, (previousValue, element) => previousValue+element);
+            i++;
+          }
           return Padding(
             padding: const EdgeInsets.all(5.0),
             child: Container(
+
               decoration: BoxDecoration(
                 color: AppColors.audioGreyBackground,
                 borderRadius: BorderRadius.circular(20),
